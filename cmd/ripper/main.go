@@ -14,6 +14,7 @@ import (
 func main() {
 	name := flag.String("f", "", "")
 	oDir := flag.String("o", "", "")
+	bs := flag.Int("bs", 0, "")
 	flag.Parse()
 
 	f, err := os.Open(*name)
@@ -26,8 +27,8 @@ func main() {
 	}
 	r := &ripper.Ripper{
 		BlockSize: &ripper.Size{
-			64,
-			64,
+			*bs,
+			*bs,
 		},
 	}
 
